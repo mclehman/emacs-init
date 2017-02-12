@@ -1,63 +1,11 @@
-(require 'package)
 
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+;(package-initialize)
 
-(setq package-enable-at-startup nil)
-(package-initialize)
-
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
-(eval-when-compile
-    (require 'use-package))
-
-(require 'evil)
-(evil-mode t)
-(evil-commentary-mode)
-(global-evil-leader-mode)
-(evil-leader/set-leader "<SPC>")
-(evil-leader/set-key "k" 'kill-buffer)
-
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
-(electric-pair-mode 1)
-
-(require 'powerline)
-(powerline-center-evil-theme)
-; (use-package airline-themes
-;     :ensure t)
-; (load-theme 'airline-papercolor t)
-
-; Helm setup
-(use-package helm
-    :ensure t)
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "C-x C-f") #'helm-find-files)
-(helm-mode 1)
-
-(add-hook 'after-init-hook 'global-company-mode)
-
-; Rust setup
-(add-hook 'rust-mode-hook 'cargo-minor-mode)
-(evil-leader/set-key-for-mode 'rust-mode "f" 'rust-format-buffer)
-(setq racer-cmd "~/.cargo/bin/racer") ;; Rustup binaries PATH
-(setq racer-rust-src-path "/Users/Max/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src") ;; Rust source code PATH
-
-(add-hook 'rust-mode-hook #'racer-mode)
-(add-hook 'racer-mode-hook #'eldoc-mode)
-(add-hook 'racer-mode-hook #'company-mode)
-(add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
-
-; Python setup
-(add-hook 'python-mode-hook 'anaconda-eldoc-mode)
-(add-hook 'python-mode-hook 'anaconda-mode)
-(eval-after-load "company"
- '(add-to-list 'company-backends 'company-anaconda))
-
-(set-default-font "Operator Mono 12")
+(org-babel-load-file "~/.emacs.d/configuration.org")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -68,7 +16,6 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["black" "red3" "ForestGreen" "yellow3" "blue" "magenta3" "DeepSkyBlue" "gray50"])
- ; '(custom-enabled-themes (quote (airline-papercolor solarized-dark)))
  '(custom-enabled-themes (quote (solarized-dark)))
  '(custom-safe-themes
    (quote
@@ -76,7 +23,10 @@
  '(hl-paren-colors
    (quote
     ("#B9F" "#B8D" "#B7B" "#B69" "#B57" "#B45" "#B33" "#B11")))
- '(inhibit-startup-screen t))
+ '(inhibit-startup-screen t)
+ '(package-selected-packages
+   (quote
+    (org-bullets auto-org-md babel evil-surround use-package solarized-theme seq racer powerline org-plus-contrib magit let-alist helm evil-visual-mark-mode evil-leader evil-commentary esup company-anaconda cargo))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

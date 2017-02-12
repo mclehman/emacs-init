@@ -1,0 +1,150 @@
+#=TITLE: Emacs Configuration
+
+* General emacs setup
+  Neither scrollbars nor a tool/menu bar are relevant when you have a keyboard.
+    #+BEGIN_SRC emacs-lisp
+    (tool-bar-mode -1)
+    (menu-bar-mode -1)
+    (scroll-bar-mode -1)
+    (global-hl-line-mode)
+    (set-default-font "Operator Mono 12")
+    (setq ring-bell-function 'ignore)
+    #+END_SRC
+
+* Set personal information
+    #+BEGIN_SRC emacs-lisp
+    (setq user-full-name "Maxfield Lehman")
+    #+END_SRC
+
+* Utility function definitions
+    #+BEGIN_SRC emacs-lisp
+    (defun kill-matching-lines (regexp &optional rstart rend interactive)
+    "Kill lines containing matches for REGEXP.
+
+    See `flush-lines' or `keep-lines' for behavior of this command.
+
+    If the buffer is read-only, Emacs will beep and refrain from deleting
+    the line, but put the line in the kill ring anyway.  This means that
+    you can use this command to copy text from a read-only buffer.
+    \(If the variable `kill-read-only-ok' is non-nil, then this won't
+    even beep.)"
+    (interactive
+    (keep-lines-read-args "Kill lines containing match for regexp"))
+    (let ((buffer-file-name nil)) ;; HACK for `clone-buffer'
+        (with-current-buffer (clone-buffer nil nil)
+        (let ((inhibit-read-only t))
+            (keep-lines regexp rstart rend interactive)
+            (kill-region (or rstart (line-beginning-position))
+                        (or rend (point-max))))
+        (kill-buffer)))
+    (unless (and buffer-read-only kill-read-only-ok)
+        ;; Delete lines or make the "Buffer is read-only" error.
+        (flush-lines regexp rstart rend interactive)))
+    #+END_SRC
+
+* Package setup
+    #+BEGIN_SRC emacs-lisp
+    (require 'package)
+
+    (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
+    (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+    (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
+
+    (setq package-enable-at-startup nil)
+    (package-initialize)
+
+    (unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package))
+
+    (eval-when-compile
+        (require 'use-package))
+    #+END_SRC
+
+* Include sensible-defaults.el
+  The settings (not keybindings) seem mostly inocuous and better choices.
+    #+BEGIN_SRC emacs-lisp
+    (load-file "~/.emacs.d/sensible-defaults.el")
+    (sensible-defaults/use-all-settings)
+    #+END_SRC
+
+* Quality of life improvements
+    #+BEGIN_SRC emacs-lisp
+    (setq-default indent-tabs-mode nil)
+    (setq tab-width 4)
+    (setq-default c-basic-offset 'tab-width)
+    (defvaralias 'cperl-indent-level 'tab-width)
+    (electric-indent-mode 1)
+    (electric-pair-mode 1)
+    #+END_SRC
+
+* Version control highlighting
+    #+BEGIN_SRC emacs-lisp
+    (global-diff-hl-mode)
+    (diff-hl-flydiff-mode)
+    (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
+    #+END_SRC
+
+* Set up evil-mode
+  Evil is a necessity for any real editing.
+    #+BEGIN_SRC emacs-lisp
+    (require 'evil)
+    (evil-mode t)
+    (global-evil-leader-mode)
+    (evil-leader/set-leader "<SPC>")
+    (evil-leader/set-key "k" 'kill-buffer)
+    (evil-commentary-mode)
+    (global-evil-surround-mode t)
+    #+END_SRC
+
+* Use powerline
+  Cool fonts upset the nice themes though.
+    #+BEGIN_SRC emacs-lisp
+    (require 'powerline)
+    (powerline-center-evil-theme)
+    #+END_SRC
+
+* Set up org-mode
+    #+BEGIN_SRC emacs-lisp
+    (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+    (setq org-src-fontify-natively t)
+    (setq org-ellipsis "⤵")
+    (setq org-src-tab-acts-natively t)
+    (setq org-bullets-bullet-list '("○" "☉" "◎" "◉" "○" "◌" "◎" "●" "◦" "◯" "⚪" "⚫" "⚬" "❍" "￮" "⊙" "⊚" "⊛" "∙" "∘"))
+    #+END_SRC
+
+* Set up helm
+    #+BEGIN_SRC emacs-lisp
+    (use-package helm
+        :ensure t)
+    (global-set-key (kbd "M-x") 'helm-M-x)
+    (global-set-key (kbd "C-x C-f") #'helm-find-files)
+    (helm-mode 1)
+    #+END_SRC
+
+* Use company-mode
+#+BEGIN_SRC emacs-lisp
+(add-hook 'after-init-hook 'global-company-mode)
+#+END_SRC
+
+* Language specific setup
+** Rust
+    It's always good to be optimistic about learning Rust.
+    #+BEGIN_SRC emacs-lisp
+    (add-hook 'rust-mode-hook 'cargo-minor-mode)
+    (evil-leader/set-key-for-mode 'rust-mode "f" 'rust-format-buffer)
+    (setq racer-cmd "~/.cargo/bin/racer") ;; Rustup binaries PATH
+    (setq racer-rust-src-path "/Users/Max/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src") ;; Rust source code PATH
+
+    (add-hook 'rust-mode-hook #'racer-mode)
+    (add-hook 'racer-mode-hook #'eldoc-mode)
+    (add-hook 'racer-mode-hook #'company-mode)
+    (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+    #+END_SRC
+** Python
+    #+BEGIN_SRC emacs-lisp
+    (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
+    (add-hook 'python-mode-hook 'anaconda-mode)
+    (eval-after-load "company"
+    '(add-to-list 'company-backends 'company-anaconda))
+    #+END_SRC
