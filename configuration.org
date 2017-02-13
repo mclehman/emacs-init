@@ -11,10 +11,12 @@
     (setq ring-bell-function 'ignore)
     #+END_SRC
 
+
 * Set personal information
     #+BEGIN_SRC emacs-lisp
     (setq user-full-name "Maxfield Lehman")
     #+END_SRC
+
 
 * Utility function definitions
     #+BEGIN_SRC emacs-lisp
@@ -42,6 +44,7 @@
         (flush-lines regexp rstart rend interactive)))
     #+END_SRC
 
+
 * Package setup
     #+BEGIN_SRC emacs-lisp
     (require 'package)
@@ -61,12 +64,14 @@
         (require 'use-package))
     #+END_SRC
 
+
 * Include sensible-defaults.el
   The settings (not keybindings) seem mostly inocuous and better choices.
     #+BEGIN_SRC emacs-lisp
     (load-file "~/.emacs.d/sensible-defaults.el")
     (sensible-defaults/use-all-settings)
     #+END_SRC
+
 
 * Quality of life improvements
     #+BEGIN_SRC emacs-lisp
@@ -78,12 +83,14 @@
     (electric-pair-mode 1)
     #+END_SRC
 
+
 * Version control highlighting
     #+BEGIN_SRC emacs-lisp
     (global-diff-hl-mode)
     (diff-hl-flydiff-mode)
     (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
     #+END_SRC
+
 
 * Set up evil-mode
   Evil is a necessity for any real editing.
@@ -97,12 +104,14 @@
     (global-evil-surround-mode t)
     #+END_SRC
 
+
 * Use powerline
   Cool fonts upset the nice themes though.
     #+BEGIN_SRC emacs-lisp
     (require 'powerline)
     (powerline-center-evil-theme)
     #+END_SRC
+
 
 * Set up org-mode
     #+BEGIN_SRC emacs-lisp
@@ -115,6 +124,7 @@
     (setq org-bullets-bullet-list '("○" "☉" "◎" "◉" "○" "◌" "◎" "●" "◦" "◯" "⚪" "⚫" "⚬" "❍" "￮" "⊙" "⊚" "⊛" "∙" "∘"))
     #+END_SRC
 
+
 * Set up helm
     #+BEGIN_SRC emacs-lisp
     (use-package helm
@@ -124,10 +134,12 @@
     (helm-mode 1)
     #+END_SRC
 
+
 * Use company-mode
 #+BEGIN_SRC emacs-lisp
 (add-hook 'after-init-hook 'global-company-mode)
 #+END_SRC
+
 
 * Language specific setup
 ** Rust
