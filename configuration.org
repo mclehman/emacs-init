@@ -95,13 +95,17 @@
 * Set up evil-mode
   Evil is a necessity for any real editing.
     #+BEGIN_SRC emacs-lisp
-    (require 'evil)
-    (evil-mode t)
     (global-evil-leader-mode)
     (evil-leader/set-leader "<SPC>")
-    (evil-leader/set-key "k" 'kill-buffer)
+    (require 'evil)
+    (evil-mode t)
     (evil-commentary-mode)
     (global-evil-surround-mode t)
+    #+END_SRC
+** Leader bindings
+    #+BEGIN_SRC emacs-lisp
+    (evil-leader/set-key "k" 'kill-buffer)
+    (evil-leader/set-key "g" 'magit-status)
     #+END_SRC
 
 
