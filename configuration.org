@@ -106,8 +106,10 @@
 
 * Set up org-mode
     #+BEGIN_SRC emacs-lisp
+    (add-to-list 'load-path "~/dev/github/org-mode/lisp" t)
     (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
     (setq org-src-fontify-natively t)
+    (setq org-export-latex-listings t)
     (setq org-ellipsis "⤵")
     (setq org-src-tab-acts-natively t)
     (setq org-bullets-bullet-list '("○" "☉" "◎" "◉" "○" "◌" "◎" "●" "◦" "◯" "⚪" "⚫" "⚬" "❍" "￮" "⊙" "⊚" "⊛" "∙" "∘"))
