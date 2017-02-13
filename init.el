@@ -26,7 +26,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (org-bullets auto-org-md babel evil-surround use-package solarized-theme seq racer powerline org-plus-contrib magit let-alist helm evil-visual-mark-mode evil-leader evil-commentary esup company-anaconda cargo))))
+    (org-bullets auto-org-md babel evil-surround use-package solarized-theme seq racer powerline magit let-alist helm evil-visual-mark-mode evil-leader evil-commentary esup company-anaconda cargo))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
