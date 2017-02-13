@@ -1,4 +1,4 @@
-#=TITLE: Emacs Configuration
+#+TITLE: Emacs Configuration
 
 * General emacs setup
   Neither scrollbars nor a tool/menu bar are relevant when you have a keyboard.
