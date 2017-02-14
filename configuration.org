@@ -122,6 +122,7 @@
     #+BEGIN_SRC emacs-lisp
     (add-to-list 'load-path "~/dev/github/org-mode/lisp" t)
     (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+    (add-hook 'org-mode-hook (lambda () (linum-mode 0)))
     (setq org-src-fontify-natively t)
     (setq org-export-latex-listings t)
     (setq org-ellipsis "⤵")
