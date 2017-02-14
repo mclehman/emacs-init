@@ -81,6 +81,7 @@
     (defvaralias 'cperl-indent-level 'tab-width)
     (electric-indent-mode 1)
     (electric-pair-mode 1)
+    (linum-mode 1)
     (setq linum-relative-current-symbol "")
     #+END_SRC
 
