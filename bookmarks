@@ -1,0 +1,20 @@
+;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*- 
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("org-capture-last-stored"
+ (filename . "~/org/spotify.org")
+ (front-context-string . "**** [[spotify:t")
+ (rear-context-string . "-09-28 Thursday\n")
+ (position . 54))
+("org-capture-last-stored-marker"
+ (filename . "~/org/agendas/thesis.org")
+ (front-context-string . "** <2017-09-26 T")
+ (rear-context-string . "-15 Sun>\n* Test\n")
+ (position . 4272))
+("org-refile-last-stored"
+ (filename . "~/org/agendas/thesis.org")
+ (front-context-string . "** <2017-09-26 T")
+ (rear-context-string . "-15 Sun>\n* Test\n")
+ (position . 4272))
+)

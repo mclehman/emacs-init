@@ -1,0 +1,42 @@
+ls
+touch foo.txt
+exit
+ls
+cat websites.org 
+man ls
+listify foo bar baz
+dired .
+cd .emacs.d/
+ls
+mkdir lisp
+mv org-spotify.el lisp/
+brew search fontawesome
+brew cask install font-fontawesome
+brew tap caskroom/fonts
+brew cask install font-fontawesome
+clear
+clear
+clear
+clear t
+g br
+alias g 'git'
+g st
+g br
+git config --list
+alias g 'git $*'
+g st
+g br
+clear t
+clear
+clear t
+brew install uzbl
+recenter 0
+recenter
+clear
+echo
+echo
+clear nil
+clear t
+test
+echo hello
+history
