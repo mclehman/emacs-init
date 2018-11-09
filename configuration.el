@@ -1,14 +1,20 @@
-
+; (setq default-frame-alist '((undecorated . t)))
+(when (memq window-system '(mac ns))
+  (add-to-list 'default-frame-alist '(ns-appearance . dark))
+  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t)))
+(setq frame-resize-pixelwise t)
+(windmove-default-keybindings)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (global-hl-line-mode)
-(set-default-font "Operator Mono 12")
+; (set-default-font "Operator Mono 12")
 (set-frame-font "Operator Mono 12" t t)
 ;(set-default-font "ProFontWindows 13")
 (setq ring-bell-function 'ignore)
 (server-start)
 (add-to-list 'load-path "~/.emacs.d/lisp/")
+;(add-to-list 'load-path "~/dev/github/org-mode/lisp" t)
 
 (setq user-full-name "Maxfield Lehman")
 
@@ -20,7 +26,7 @@ See `flush-lines' or `keep-lines' for behavior of this command.
 If the buffer is read-only, Emacs will beep and refrain from deleting
 the line, but put the line in the kill ring anyway.  This means that
 you can use this command to copy text from a read-only buffer.
-\(If the variable `kill-read-only-ok' is non-nil, then this won't
+(If the variable `kill-read-only-ok' is non-nil, then this won't
 even beep.)"
 (interactive
 (keep-lines-read-args "Kill lines containing match for regexp"))
@@ -42,7 +48,7 @@ even beep.)"
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 
 (setq package-enable-at-startup nil)
-(package-initialize)
+;; (package-initialize)
 
 (unless (package-installed-p 'use-package)
 (package-refresh-contents)
@@ -78,9 +84,6 @@ even beep.)"
 
 (global-evil-leader-mode)
 (evil-leader/set-leader "<SPC>")
-(evil-leader/set-key
-    "<left>" 'evil-window-left
-    "<right>" 'evil-window-right)
 (require 'evil)
 (evil-mode t)
 (evil-commentary-mode)
@@ -90,15 +93,20 @@ even beep.)"
 (evil-leader/set-key "g" 'magit-status)
 (evil-leader/set-key "<up>" 'evil-numbers/inc-at-pt)
 (evil-leader/set-key "<down>" 'evil-numbers/dec-at-pt)
+(evil-leader/set-key
+    "<left>" 'evil-window-left
+    "<right>" 'evil-window-right)
 
 (require 'powerline)
 (powerline-center-evil-theme)
 
-(add-to-list 'load-path "~/dev/github/org-mode/lisp" t)
+;(require 'org)
+;(require 'org-spotify)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 (add-hook 'org-mode-hook (lambda () (org-indent-mode 1)))
 (add-hook 'org-mode-hook (lambda () (linum-mode 1)))
 (define-key global-map (kbd "C-c c") 'org-capture)
+(define-key global-map (kbd "C-c a") 'org-agenda)
 (define-key org-mode-map (kbd "C-c g c") (lambda () (interactive) (insert (grab-mac-link 'chrome 'org))))
 (define-key org-mode-map (kbd "C-c g m") (lambda () (interactive) (insert (grab-mac-link 'mail 'org))))
 (add-hook 'org-mode-hook
@@ -199,7 +207,7 @@ length of PATH (sans directory slashes) down to MAX-LEN."
                 ("git@github" " ")
                 ("git@gitlab" " ")
                 (_            "")))
-             (magit-get-current-branch)
+              (magit-get-current-branch)
              '(:foreground "green3"))
 
 (esh-section esh-clock
@@ -288,3 +296,8 @@ length of PATH (sans directory slashes) down to MAX-LEN."
                     (setq c-basic-offset 4
                             tab-width 4
                             indent-tabs-mode t)))
+
+(require 'epa-file)
+(epa-file-enable)
+
+(require 'org-spotify)

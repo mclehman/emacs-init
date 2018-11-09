@@ -1,12 +1,17 @@
-;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*- 
+;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: no-conversion -*- 
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("org-capture-last-stored"
+(("floobits-gvgame-393153"
+ (filename . "~/school/cse434/p2/server.c")
+ (front-context-string . " }\n        if   ")
+ (rear-context-string . "ile() {\n\n       ")
+ (position . 11398))
+("org-capture-last-stored"
  (filename . "~/org/spotify.org")
  (front-context-string . "**** [[spotify:t")
- (rear-context-string . "-09-28 Thursday\n")
- (position . 54))
+ (rear-context-string . "10-03 Wednesday\n")
+ (position . 1039))
 ("org-capture-last-stored-marker"
  (filename . "~/org/agendas/thesis.org")
  (front-context-string . "** <2017-09-26 T")

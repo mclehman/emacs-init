@@ -1,42 +1,128 @@
-ls
-touch foo.txt
-exit
-ls
-cat websites.org 
-man ls
-listify foo bar baz
-dired .
-cd .emacs.d/
-ls
-mkdir lisp
-mv org-spotify.el lisp/
-brew search fontawesome
-brew cask install font-fontawesome
-brew tap caskroom/fonts
-brew cask install font-fontawesome
-clear
-clear
-clear
-clear t
-g br
-alias g 'git'
-g st
-g br
-git config --list
-alias g 'git $*'
-g st
-g br
-clear t
-clear
-clear t
-brew install uzbl
-recenter 0
-recenter
-clear
-echo
-echo
-clear nil
-clear t
-test
-echo hello
-history
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+./gen-thesis.sh 
+cp thesis.tex thesis-rev.tex
+cp gen-thesis.sh gen-thesis-rev.sh
+./gen-thesis-rev.sh
+./gen-thesis-rev.sh
+emacsclient ./gen-thesis-rev.sh
+open thesis-rev.pdf
+bibtex thesis-rev
+./gen-thesis-rev.sh
+cp research.bib research-rev.bib
+./gen-thesis-rev.sh
+./gen-thesis-rev.sh
+./gen-thesis-rev.sh
+./gen-thesis-rev.sh
+./gen-thesis-rev.sh
+./gen-thesis-rev.sh
+./gen-thesis-rev.sh
+./gen-thesis-rev.sh
+./gen-thesis-rev.sh
+open thesis-rev.pdf
+./gen-thesis-rev.sh
+cd ~/school/cse545/ctf/0
+./gen.sh
+./gen.sh
+./gen.sh
+./gen.sh
+./gen.sh
+./gen.sh
+./gen.sh
+./gen.sh
+./gen.sh
+./gen.sh
+./gen.sh
+cd ~/school/cse545/ctf/0
+./gen.sh
+./gen.sh
+./gen.sh
+./gen.sh
+./gen.sh
+./gen.sh
+./gen.sh
+./gen.sh
+./gen.sh
+./gen.sh
+./gen.sh
+./gen.sh
+./gen.sh
+./gen.sh
+./gen.sh
+./gen.sh
+./gen.sh
+./gen.sh
+./gen.sh
+./gen.sh
+./gen.sh
+./gen.sh
+./gen.sh
+./gen.sh
+./gen.sh
+open thesis-rev.pdf 
+./gen-thesis-rev.sh
+cd ~/thesis/
+./gen-thesis-rev.sh 
+open thesis-rev.pdf
+./gen-thesis-rev.sh && open thesis-rev.pdf
+./gen-thesis-rev.sh && open thesis-rev.pdf
+cp thesis-rev.pdf Lehman_M_Fall_2018.pdf
+cp thesis-rev.pdf Lehman_M_Fall_2018.pdf
+./gen-thesis-rev.sh && open thesis-rev.pdf
+cp thesis-rev.pdf Lehman_M_Fall_2018.pdf
+open Lehman_M_Fall_2018.pdf 

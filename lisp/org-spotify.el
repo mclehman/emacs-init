@@ -4,7 +4,7 @@
 (require 's)
 
 (org-add-link-type "spotify" 'org-spotify-open)
-;; (add-hook 'org-store-link-functions 'org-spotify-store-link)
+(add-hook 'org-store-link-functions 'org-spotify-store-link)
 
 (defun org-spotify-open (path)
   (let ((uri (concat "spotify:" path)))
